@@ -18,9 +18,33 @@ class MangaFactory extends Factory
     public function definition(): array
     {
         $name = $this->faker->unique()->sentence();
+        $categories = [
+            'Shonen',
+            'Shojo',
+            'Seinen',
+            'Josei',
+            'Kodomomuke',
+            'Isekai',
+            'Harem',
+            'Slice of Life',
+            'Mecha',
+            'Fantasy',
+            'Science Fiction',
+            'Horror',
+            'Sports',
+            'Historical',
+            'Comedy',
+            'Drama',
+            'Adventure',
+            'Mystery',
+            'Supernatural',
+            'Psychological'
+        ];
+
         return [
             'name' => $name,
             'description' => $this->faker->paragraph(),
+            'category' => $this->faker->randomElement($categories),
             'image' => $this->faker->imageUrl(600, 600),
             'slug' => Str::slug($name),
             'link' => $this->faker->url('http'),

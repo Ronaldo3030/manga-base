@@ -11,6 +11,7 @@
         <img src="{{ $manga->image }}" alt="Image {{ $manga->name }}">
         <div>
             <h2 class="uppercase">{{ $manga->name }}</h2>
+            <p>Categoria: {{ $manga->category }}</p>
             <p>Ranking: {{ $manga->rank }}</p>
             <p>{{ $manga->description }}</p>
 
