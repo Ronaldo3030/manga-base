@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Manga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $mangas = Manga::all();
+        $mangas = Manga::orderBy('rank', 'desc')->get();
 
         return view('logged.home', compact('mangas'));
 

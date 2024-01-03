@@ -33,9 +33,10 @@ class MangaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Manga $manga)
+    public function show(Manga $manga, $slug)
     {
-        //
+        $manga = $manga->where('slug', $slug)->first();
+        return view('logged.manga.show', compact('manga'));
     }
 
     /**
