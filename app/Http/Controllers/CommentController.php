@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\Manga;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class MangaController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -35,18 +34,15 @@ class MangaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Manga $manga, Comment $comments, User $users, $slug)
+    public function show(Comment $comment)
     {
-        $manga = $manga->where('slug', $slug)->first();
-        $comments = $comments->where('id_manga', $manga->id)->get();
-        $users = $users->all();
-        return view('logged.manga.show', compact('manga', 'comments', 'users'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Manga $manga)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -54,7 +50,7 @@ class MangaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Manga $manga)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -62,7 +58,7 @@ class MangaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Manga $manga)
+    public function destroy(Comment $comment)
     {
         //
     }

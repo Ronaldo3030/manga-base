@@ -13,6 +13,25 @@
             <h2 class="uppercase">{{ $manga->name }}</h2>
             <p>Ranking: {{ $manga->rank }}</p>
             <p>{{ $manga->description }}</p>
+
+            <div>
+                <h3 class="my-5">Comentários</h3>
+                <div class="flex flex-col gap-3">
+                    @foreach ($comments as $comment)
+                        @component('components.cardComment')
+                            @slot('src')
+                                {{ $users[$comment->id_user - 1]->image }}
+                            @endslot
+                            @slot('userName')
+                                {{ $users[$comment->id_user - 1]->name }}
+                            @endslot
+                            @slot('comment')
+                                {{ $comment->comment }}
+                            @endslot
+                        @endcomponent
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 @endsection
