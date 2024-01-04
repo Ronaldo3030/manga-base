@@ -21,10 +21,10 @@
                     @foreach ($comments as $comment)
                         @component('components.cardComment')
                             @slot('src')
-                                {{ $users[$comment->id_user - 1]->image }}
+                                {{ $comment->user->image }}
                             @endslot
                             @slot('userName')
-                                {{ $users[$comment->id_user - 1]->name }}
+                                {{ $comment->user->name }}
                             @endslot
                             @slot('comment')
                                 {{ $comment->comment }}

@@ -10,9 +10,11 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id = 1)
     {
-        //
+        $comment = Comment::find($id)->first();
+        $teste = $comment->user->id;
+        dd($teste);
     }
 
     /**

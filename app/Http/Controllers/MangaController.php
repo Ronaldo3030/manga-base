@@ -35,12 +35,11 @@ class MangaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Manga $manga, Comment $comments, User $users, $slug)
+    public function show($slug)
     {
-        $manga = $manga->where('slug', $slug)->first();
-        $comments = $comments->where('id_manga', $manga->id)->get();
-        $users = $users->all();
-        return view('logged.manga.show', compact('manga', 'comments', 'users'));
+        $manga = Manga::where('slug', $slug)->first();
+        $comments = Comment::where('id_manga', $manga->id)->get();
+        return view('logged.manga.show', compact('manga', 'comments'));
     }
 
     /**
