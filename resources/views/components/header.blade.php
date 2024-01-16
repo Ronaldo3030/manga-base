@@ -3,7 +3,16 @@
     <ul class="flex gap-5">
         <li class="hover:text-slate-400 cursor-pointer transition-all">Início</li>
         <li class="hover:text-slate-400 cursor-pointer transition-all">Categorias <i class="fas fa-chevron-down fa-xs"></i></li>
-        <li class="hover:text-slate-400 cursor-pointer transition-all">Usuário</li>
+        @auth
+            <li class="hover:text-slate-400 cursor-pointer transition-all">{{auth()->user()}}</li>
+            
+        @else
+            <li class="hover:text-slate-400 cursor-pointer transition-all">
+                <a href="{{route('login.index')}}">
+                    Logar
+                </a>
+            </li>
+        @endauth
         <li class="hover:text-slate-400 cursor-pointer transition-all"><a href="{{route('user.create')}}">Registrar</a></li>
     </ul>
 </header>

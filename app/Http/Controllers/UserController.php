@@ -37,6 +37,8 @@ class UserController extends Controller
             'password' => $request->password,
             'image' => 'defaultUser.jpg',
         ]);
+
+        return redirect()->route('login.index')->with('success', 'Conta criada com sucesso!');
     }
 
     /**
