@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', $manga->name)
+@section('title', "Manga - $manga->name")
 
 @component('components.header')
 @endcomponent
@@ -8,10 +8,10 @@
 @section('content')
     <a href="{{ route('logged.home') }}">Voltar</a>
     <div class="grid grid-cols-2 gap-5">
-        <img src="{{ $manga->image }}" alt="Image {{ $manga->name }}">
+        <img class="rounded-lg" src="{{ $manga->image }}" alt="Image {{ $manga->name }}">
         <div>
             <h2 class="uppercase">{{ $manga->name }}</h2>
-            <p>Categoria: {{ $manga->category }}</p>
+            <p>Categoria: {{ $manga->category->name }}</p>
             <p>Ranking: {{ $manga->rank }}</p>
             <p>{{ $manga->description }}</p>
 

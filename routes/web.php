@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index'])->name('logged.home');
+Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 Route::get('/registrar', [UserController::class, 'create'])->name('user.create');
 Route::post('/registrar', [UserController::class, 'store'])->name('user.store');
 

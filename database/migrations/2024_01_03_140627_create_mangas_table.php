@@ -15,11 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('category');
             $table->string('image');
             $table->string('slug');
             $table->string('link');
             $table->double('rank', 10, 2);
+
+            $table->unsignedBigInteger('id_category');
+            $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
