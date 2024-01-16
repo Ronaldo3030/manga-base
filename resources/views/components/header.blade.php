@@ -1,5 +1,5 @@
 <header class="bg-gradient-to-t from-slate-700 to-slate-800 text-white flex py-5 px-10 justify-between shadow-md">
-    <a class="uppercase font-semi-bold text-xl" href="{{ route('logged.home') }}">Mangabase</a>
+    <a class="uppercase font-semibold text-xl" href="{{ route('logged.home') }}">Mangabase</a>
     <ul class="flex gap-5">
         <li class="hover:text-slate-400 cursor-pointer transition-all">Início</li>
         <li class="hover:text-slate-400 cursor-pointer transition-all" data-dropdown-toggle="dropdown">Categorias <i
@@ -8,23 +8,12 @@
         <div id="dropdown"
             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                @foreach ($categories as $category)
                 <li>
-                    <a href="#"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    <a href="{{route('manga.category', $category->id)}}"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{$category->name}}</a>
                 </li>
-                <li>
-                    <a href="#"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                        out</a>
-                </li>
+                @endforeach
             </ul>
         </div>
 

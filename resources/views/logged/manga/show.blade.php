@@ -6,7 +6,7 @@
 @endcomponent
 
 @section('content')
-    <a href="{{ route('logged.home') }}">Voltar</a>
+    <a href="{{ url()->previous() }}">Voltar</a>
     <div class="grid grid-cols-2 gap-5">
         <img class="rounded-lg" src="{{ $manga->image }}" alt="Image {{ $manga->name }}">
         <div>
