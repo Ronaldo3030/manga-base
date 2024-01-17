@@ -13,8 +13,10 @@ class Manga extends Model
         'name',
         'description',
         'image',
+        'slug',
         'link',
         'rank',
+        'id_category'
     ];
 
     public function category(){

@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Manga;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MangaController extends Controller
 {
@@ -29,7 +30,46 @@ class MangaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => [
+                'required',
+                'min:4'
+            ],
+            'description' => [
+                'required',
+                'min:55',
+                'max: 255'
+            ],
+            'image' => [
+                'required',
+                'mimes:jpg,jpeg,bmp,png',
+                'image',
+                'max:2048'
+            ]
+        ]);
+
+        $path = public_path('images/');
+        !is_dir($path) &&
+            mkdir($path, 0777, true);
+
+        
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move($path, $imageName);
+        $slug = Str::slug($data['name'], '-');
+
+        $manga = Manga::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'image' => $imageName,
+            'slug' => $slug,
+            'link' => 'teste',
+            'rank' => 0,
+            'id_category' => 1
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('success', 'Manga criado com sucesso.');
     }
 
     /**
